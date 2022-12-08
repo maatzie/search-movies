@@ -1,9 +1,10 @@
 import React from "react";
-import {Header} from "./layouot/header";
-import {Footer} from './layouot/footer';
-import {Main} from "./layouot/main";
+import {Header} from "./layouot/Header";
+import {Footer} from './layouot/Footer';
+import {Main} from "./layouot/Main";
 
-function App() {
+function App() { 
+  
   return (
     <React.Fragment>
       <Header/>
