@@ -1,5 +1,6 @@
 import React from 'react';
 import {Movies} from '../components/Movies';
+import {Preloader} from '../components/Preloader'
 
 class Main extends React.Component {
     
@@ -10,7 +11,7 @@ class Main extends React.Component {
           }
     }
     componentDidMount() {
-        fetch("http://www.omdbapi.com/?s=matrix&apikey=7f8af3af&page=2")
+        fetch("http://www.omdbapi.com/?s=matrix&apikey=7f8af3af&page=1")
             .then((data) => data.json())
             .then((data) => this.setState({movies: data.Search}))
             .then((data) => console.log(this.state.movies));                
@@ -19,9 +20,7 @@ class Main extends React.Component {
         <main className="container content">
         {this.state.movies.length ? (
             <Movies data={this.state.movies} />
-        ) : (
-            <h3>Loading...</h3> 
-        )}
+        ) : (<Preloader/>)}
         </main>);
     }
 }
