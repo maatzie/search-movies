@@ -1,9 +1,15 @@
+import React from "react";
+import {Header} from "./layouot/header";
+import {Footer} from './layouot/footer';
+import {Main} from "./layouot/main";
 
 function App() {
   return (
-    <div className="App">
-      HI
-    </div>
+    <React.Fragment>
+      <Header/>
+      <Main/>
+      <Footer/>
+    </React.Fragment>
   );
 }
 
