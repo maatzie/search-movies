@@ -36,3 +36,7 @@ nav {
 .search-field {
   width: calc(100% - 100px);
 }
+
+.filter label {
+  margin-right: 2rem;
+}

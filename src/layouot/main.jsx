@@ -17,11 +17,11 @@ class Main extends React.Component {
         //     .then((data) => data.json())
         //     .then((data) => this.setState({movies: data.Search}))
         //     .then((data) => console.log(this.state.movies));  
-        this.searchMovies('matrix');              
+        this.searchMovies('matrix', '');              
     }
 
-    searchMovies(title) {
-        fetch(`http://www.omdbapi.com/?s=${title}&apikey=7f8af3af&page=1`)
+    searchMovies(title, type) {
+        fetch(`http://www.omdbapi.com/?s=${title}&apikey=7f8af3af&page=1&type=${type}`)
             .then((data) => data.json())
             .then((data) => this.setState({movies: data.Search}));
     }
