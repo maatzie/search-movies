@@ -21,9 +21,13 @@ class Main extends React.Component {
 
     searchMovies(title, type) {
         this.setState({loading: true});
-        fetch(`http://www.omdbapi.com/?s=${title}&apikey=${API_KEY}&page=1&type=${type}`)
+        fetch(`https://www.omdbapi.com/?s=${title}&apikey=${API_KEY}&page=1&type=${type}`)
             .then((data) => data.json())
-            .then((data) => this.setState({movies: data.Search, loading: false}));
+            .then((data) => this.setState({movies: data.Search, loading: false}))
+            .catch((error) => {
+                console.error(error);
+                this.setState({loading: false});
+            });
     }
 
     render() { 
