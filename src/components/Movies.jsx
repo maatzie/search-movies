@@ -1,13 +1,16 @@
 import React from 'react';
 import {Movie} from './Movie';
+import {NothingFound} from './NothingFound';
 
 function Movies(props) {
+    const {movies = []} = props;
     return <div className="movies">
-            {props.data.map((movie) => <Movie title={movie.Title} 
+            {movies.length ? movies.map((movie) => <Movie title={movie.Title} 
                                         key={movie.imdbID}
                                         year={movie.Year} 
                                         type={movie.Type}
-                                        poster={movie.Poster}/> )}
+                                        poster={movie.Poster}/> )
+                                    : <NothingFound/>}
 
     </div>;
 }

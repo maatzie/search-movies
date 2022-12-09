@@ -9,6 +9,7 @@ class Main extends React.Component {
         super();
         this.state = {
             movies: [],
+            loading: true,
         }
         this.searchMovies = this.searchMovies.bind(this);
     }
@@ -21,18 +22,21 @@ class Main extends React.Component {
     }
 
     searchMovies(title, type) {
+        this.setState({loading: true});
         fetch(`http://www.omdbapi.com/?s=${title}&apikey=7f8af3af&page=1&type=${type}`)
             .then((data) => data.json())
-            .then((data) => this.setState({movies: data.Search}));
+            .then((data) => this.setState({movies: data.Search, loading: false}));
     }
 
-    render() { return <main className="container content">
-        <Search searchCb={this.searchMovies} />
-        {
-            this.state.movies.length ? (
-                <Movies data={this.state.movies} />
-            ) : (<Preloader/>)
-        }
+    render() { 
+        const {movies, loading} = this.state;
+        return <main className="container content">
+            <Search searchCb={this.searchMovies} />
+            {
+                loading ? (
+                    <Preloader/>
+                ) : (<Movies movies={movies} />)
+            }
         </main>;
     }
 }
