@@ -9,7 +9,8 @@ function Movies(props) {
                                         key={movie.imdbID}
                                         year={movie.Year} 
                                         type={movie.Type}
-                                        poster={movie.Poster}/> )
+                                        poster={movie.Poster}
+                                        id={movie.imdbID}/> )
                                     : <NothingFound/>}
 
     </div>;
